@@ -1,268 +1,358 @@
-# 📘 BUKU PANDUAN PENGGUNA RESMI (OFFICIAL GUIDE BOOK)
-## 🏛️ HOARIZON • KASLY — Class Cashflow & Smart Wallet Management System
+# 📖 BUKU PANDUAN PENGGUNA (USER GUIDEBOOK)
+# HOARIZON • KASLY — Class Cashflow & Smart Wallet Management System
 
-> **Versi Dokumen:** 1.0 (Agustus 2026)  
-> **Pengembang:** Hoarizon Dev • Hak Cipta © 2026 **Suami Marie**  
-> **Target Pengguna:** Ketua Kelas, Bendahara, Wali Kelas, dan Seluruh Anggota Kelas
+> **Versi Panduan**: 1.0 (Lengkap)  
+> **Hak Cipta**: © 2026 **Suami Marie • HOARIZON Dev**  
+> **Target Pengguna**: Ketua Kelas, Bendahara, Sekretaris, Wali Kelas, dan Seluruh Anggota Kelas
 
 ---
 
 ## 📑 DAFTAR ISI
 
-1. [BAB 1: Pendahuluan & Gambaran Umum](#bab-1-pendahuluan--gambaran-umum)
-2. [BAB 2: Peran Pengguna & Hak Akses (Roles & Permissions)](#bab-2-peran-pengguna--hak-akses)
-3. [BAB 3: Panduan Masuk Akun & Personalisasi Profil](#bab-3-panduan-masuk-akun--personalisasi-profil)
-4. [BAB 4: Panduan Dashboard Keuangan](#bab-4-panduan-dashboard-keuangan)
-5. [BAB 5: Panduan Buku Kas & Arus Kas (Cashflow)](#bab-5-panduan-buku-kas--arus-kas-cashflow)
-6. [BAB 6: Panduan Iuran Bulanan 4 Minggu & Pembayaran](#bab-6-panduan-iuran-bulanan-4-minggu)
-7. [BAB 7: Panduan Status Pembayaran & Pengingat Tagihan](#bab-7-panduan-status-pembayaran--pengingat)
-8. [BAB 8: Panduan Program Target Tabungan (Savings Target)](#bab-8-panduan-program-target-tabungan)
-9. [BAB 9: Panduan Manajemen Bukti & Nota Digital (Evidence)](#bab-9-panduan-manajemen-bukti--nota)
-10. [BAB 10: Panduan Laporan Keuangan & Audit Log](#bab-10-panduan-laporan-keuangan--audit-log)
-11. [BAB 11: Sistem Notifikasi Interaktif](#bab-11-sistem-notifikasi-interaktif)
-12. [BAB 12: Panduan Tampilan Responsif (Mobile vs Desktop)](#bab-12-panduan-tampilan-responsif)
-13. [BAB 13: FAQ & Solusi Masalah Umum (Troubleshooting)](#bab-13-faq--solusi-masalah-umum)
+1. [Pendahuluan & Konsep Utama Aplikasi](#1-pendahuluan--konsep-utama-aplikasi)
+2. [Hierarki Peran & Hak Akses Pengguna (RBAC)](#2-hierarki-peran--hak-akses-pengguna-rbac)
+3. [Panduan Lengkap Halaman & Setiap Card](#3-panduan-lengkap-halaman--setiap-card)
+   - [3.1. Halaman Login (`/login`)](#31-halaman-login-login)
+   - [3.2. Dashboard Utama (`/dashboard`)](#32-dashboard-utama-dashboard)
+   - [3.3. Buku Kas & Arus Kas (`/finance/cashflow`)](#33-buku-kas--arus-kas-financecashflow)
+   - [3.4. Iuran Kas Bulanan 4 Minggu (`/contributions`)](#34-iuran-kas-bulanan-4-minggu-contributions)
+   - [3.5. Status Pembayaran & Monitoring Siswa (`/contributions/status`)](#35-status-pembayaran--monitoring-siswa-contributionsstatus)
+   - [3.6. Program Target Tabungan (`/savings/targets`)](#36-program-target-tabungan-savingstargets)
+   - [3.7. Bukti & Nota Digital (`/evidence`)](#37-bukti--nota-digital-evidence)
+   - [3.8. Laporan Keuangan & Ekspor PDF/CSV (`/finance/reports`)](#38-laporan-keuangan--ekspor-pdfcsv-financereports)
+   - [3.9. Anggota Kelas (`/members`)](#39-anggota-kelas-members)
+   - [3.10. Hak Akses & Peran (`/permissions`)](#310-hak-akses--peran-permissions)
+   - [3.11. Log Audit Aktivitas Sistem (`/audit`)](#311-log-audit-aktivitas-sistem-audit)
+   - [3.12. Pengaturan Profil Akun (`/settings`)](#312-pengaturan-profil-akun-settings)
+4. [Panduan Navigasi Global (Topbar & Mobile Navigation)](#4-panduan-navigasi-global-topbar--mobile-navigation)
+5. [Tanya Jawab Umum & Solusi Masalah (FAQ)](#5-tanya-jawab-umum--solusi-masalah-faq)
 
 ---
 
-## 🏛️ BAB 1: Pendahuluan & Gambaran Umum
+## 1. PENDAHULUAN & KONSEP UTAMA APLIKASI
 
-**KASLY** adalah aplikasi berbasis web yang diciptakan untuk menyelesaikan kendala pembukuan kas kelas konvensional (buku tulis manual yang rentan hilang, rusak, atau sulit diaudit). Dengan sistem digital terpusat:
-- **Transparansi Penuh**: Seluruh siswa dan wali kelas dapat melihat arus kas masuk dan keluar secara terbuka.
-- **Akuntabilitas**: Setiap rupiah yang dibelanjakan wajib disertai foto kuitansi/nota digital.
-- **Otomatisasi Laporan**: Rekapitulasi kas bulanan, status lunas, dan ekspor CSV/PDF dapat dilakukan dengan 1 klik.
+**KASLY** adalah aplikasi berbasis web modern yang dirancang untuk mengelola keuangan kas kelas secara transparan, otomatis, dan akuntabel. Aplikasi ini menyelesaikan berbagai permasalahan pembukuan manual (seperti catatan hilang, selisih perhitungan saldo, lupa tagihan iuran, dan bukti nota belanja yang tercecer).
+
+### 🌟 Nilai Utama Kasly:
+- **Transparansi Total**: Setiap pemasukan, pengeluaran, dan bukti struk belanja dapat dicek secara langsung oleh seluruh anggota dan wali kelas.
+- **Kalkulasi Otomatis**: Saldo bersih kas, persentase kelunasan iuran, dan pencapaian target tabungan dihitung otomatis oleh sistem database.
+- **Dukungan Multi-Perangkat**: Tampilan responsif yang nyaman digunakan pada layar Laptop/Desktop maupun Ponsel Pintar (Smartphone).
+- **Tema Fleksibel**: Mendukung **Mode Terang (*Light*)** dan **Mode Gelap (*Dark*)** untuk kenyamanan mata pengguna.
 
 ---
 
-## 🛡️ BAB 2: Peran Pengguna & Hak Akses
+## 2. HIERARKI PERAN & HAK AKSES PENGGUNA (RBAC)
 
-Sistem Kasly membagi hak akses ke dalam 5 tingkatan peran (*Role-Based Access Control*):
+Aplikasi Kasly menerapkan sistem izin bertingkat (*Role-Based Access Control*):
 
-| Peran Jabatan | Kode Sistem | Hak Akses & Tanggung Jawab Utama |
+| Peran Jabatan | Kode Role | Hak Akses Utama |
 |---|---|---|
-| **👑 Ketua Kelas** | `CLASS_LEADER` | Akses penuh superadmin: mengelola semua transaksi, memverifikasi setoran iuran/target, mengatur peran anggota, dan melihat log audit. |
-| **💰 Bendahara 1 & 2** | `TREASURER_1` & `TREASURER_2` | Mencatat kas masuk/keluar, memverifikasi bukti transfer iuran, mengelola target tabungan, dan mencetak laporan keuangan. |
-| **✍️ Sekretaris 1 & 2** | `SECRETARY_1` & `SECRETARY_2` | Membantu pencatatan notulensi kas, mengunggah bukti nota, dan memantau kehadiran data. |
-| **🎓 Wali Kelas** | `HOMEROOM_TEACHER` | Akses pengawasan (*Auditor/Read-Only*): memantau saldo kas aktif, memeriksa nota belanja, dan memantau siswa penunggak iuran. |
-| **👥 Anggota Siswa** | `CLASS_MEMBER` | Mengajukan pembayaran iuran kas mingguan, menyetor dana target tabungan, memeriksa status lunas pribadi, dan melihat transparansi saldo kas. |
+| **Ketua Kelas** | `CLASS_LEADER` | Akses penuh (*Full Admin*) ke seluruh fitur, konfirmasi pembayaran, kelola peran anggota, dan persetujuan pengeluaran. |
+| **Bendahara 1 & 2** | `TREASURER_1`, `TREASURER_2` | Mencatat transaksi kas masuk/keluar, memverifikasi setoran iuran dan tabungan, mengunggah bukti nota, dan mengunduh laporan. |
+| **Sekretaris 1 & 2** | `SECRETARY_1`, `SECRETARY_2` | Meninjau pengajuan iuran, memverifikasi bukti transfer, mencatat aktivitas kelas, dan monitoring presensi pembayaran. |
+| **Wali Kelas** | `HOMEROOM_TEACHER` | Akses pengawasan (*Auditor / Read-Only Super*), memantau seluruh mutasi kas, memeriksa laporan keuangan, dan log audit. |
+| **Anggota Kelas** | `CLASS_MEMBER` | Mengajukan pembayaran iuran mingguan, mengajukan setoran target tabungan, melihat saldo kelas, memeriksa bukti belanja, dan melihat riwayat kas. |
 
 ---
 
-## 🔑 BAB 3: Panduan Masuk Akun & Personalisasi Profil
-
-### 1. Cara Masuk ke Aplikasi (Login)
-1. Buka alamat website Kasly pada peramban (*browser*) Anda (misal: `https://kasly-app.vercel.app` atau `localhost:3000`).
-2. Masukkan **Nama Lengkap / Username** Anda sesuai yang terdaftar di kelas (contoh: `Marie Allycia Renaldine`).
-3. Masukkan **Kata Sandi (Password)** Anda. Klik ikon mata (👁️) di sebelah kanan jika ingin memeriksa ketikan sandi.
-4. Klik tombol **`👛 Masuk ke Dompet Kas Kelas`**.
-
-### 2. Mengubah Tema Tampilan (Mode Gelap & Terang)
-Kasly menyediakan 2 cara mudah untuk mengganti tema:
-- **Pintasan 1-Klik**: Klik tombol **Matahari (☀️) / Bulan (🌙)** di bar atas sebelah lonceng notifikasi.
-- **Menu Profil**: Klik foto avatar di pojok kanan atas ➡️ pilih segmen **Terang**, **Gelap**, atau **Sistem**.
-
-### 3. Cara Keluar dari Sesi Akun (Logout)
-1. Klik **Avatar Profil** di pojok kanan atas.
-2. Klik tombol merah **`🚪 Keluar dari Akun`**.
-3. Sistem akan memunculkan pop-up dialog konfirmasi: klik **`Ya, Keluar Akun`** untuk mengakhiri sesi login secara aman.
+## 3. PANDUAN LENGKAP HALAMAN & SETIAP CARD
 
 ---
 
-## 📊 BAB 4: Panduan Dashboard Keuangan
+### 3.1. Halaman Login (`/login`)
 
-Halaman **Dashboard** (`/dashboard`) adalah pusat komando keuangan kelas:
+Halaman pintu masuk sistem untuk memastikan keamanan data keuangan kelas.
 
-1. **🏛️ Header Sambutan**: Menyapa nama Anda sesuai peran jabatan (*Ketua Kelas / Bendahara / Anggota*).
-2. **💰 Master Wallet Balance Card (Kartu Saldo Utama)**:
-   - Menampilkan total saldo kas aktif yang tersedia di kas kelas secara *Live Sinkron*.
-   - Menyajikan subtotal kas masuk dan kas keluar terakumulasi.
-3. **⚡ Pintasan Fitur Cepat (6 Quick Actions)**:
-   - Tombol navigasi instan ke Buku Kas, Iuran Bulanan, Status Pembayaran, Target Tabungan, Bukti Nota, dan Laporan.
-4. **📈 4 Pilar Metrik Finansial**:
-   - **Total Kas Masuk**: Akumulasi seluruh pemasukan uang kas.
-   - **Total Kas Keluar**: Akumulasi realisasi belanja dan pengeluaran.
-   - **Target Tabungan**: Capaian dana tabungan kelas vs target nominal.
-   - **Kelunasan Iuran**: Jumlah siswa lunas dari total seluruh siswa bulan berjalan.
-5. **📋 Dua Kolom Informasi Aktif**:
-   - Kolom Kiri: Daftar 5 mutasi kas masuk/keluar terbaru (*Recent Transactions*).
-   - Kolom Kanan: Daftar program target tabungan yang sedang berjalan beserta sisa hari (*Days Remaining*).
+#### 🎴 Komponen & Card pada Halaman:
+1. **Showcase Kiri (Mode Desktop)**:
+   - Menampilkan ringkasan keunggulan fitur (Buku Kas, Matriks 4 Minggu, dan Target Tabungan).
+2. **Card Form Login (Kanan/Tengah)**:
+   - **Input Nama Lengkap / Username**: Masukkan nama lengkap sesuai data kelas (contoh: `Marie Allycia Renaldine`).
+   - **Input Kata Sandi (Password)**: Masukkan kata sandi akun Anda.
+   - **Tombol Ikon Mata (*Show/Hide Password*)**: Klik untuk melihat atau menyembunyikan karakter sandi yang sedang diketik.
+   - **Tombol "👛 Masuk ke Dompet Kas Kelas"**: Klik untuk memvalidasi kredensial dan masuk ke Dashboard.
+   - **Tautan Bantuan "Lupa password?"**: Informasi kontak langsung ke Ketua Kelas atau Bendahara untuk mereset sandi jika terlupa.
+   - **Badge Footer**: Menampilkan hak cipta resmi `✨ CopyRight @Suami Marie 💙`.
 
 ---
 
-## 💸 BAB 5: Panduan Buku Kas & Arus Kas (Cashflow)
+### 3.2. Dashboard Utama (`/dashboard`)
 
-Halaman **Buku Kas** (`/finance/cashflow`) digunakan untuk memantau dan mencatat seluruh perputaran uang kas.
+Pusat kendali dan ringkasan keuangan kelas dalam satu tampilan eksekutif.
 
-### 1. Mencatat Kas Masuk (Pemasukan)
-1. Klik tombol hijau **`+ Catat Pemasukan`**.
-2. Isi formulir yang muncul:
-   - **Kategori**: Pilih `Iuran Kas`, `Donasi / Sumbangan`, `Penjualan Merchandise`, dsb.
-   - **Nominal**: Masukkan jumlah rupiah (contoh: `50.000`).
-   - **Metode Pembayaran**: Pilih `CASH (Tunai)`, `SPAY (ShopeePay)`, `BCA`, `SEABANK`, atau `GOPAY`.
-   - **Tanggal Transaksi**: Tentukan tanggal penerimaan uang.
-   - **Keterangan**: Tambahkan catatan pendukung (opsional).
-3. Klik **`Simpan Transaksi`**.
-
-### 2. Mencatat Kas Keluar (Pengeluaran & Nota)
-1. Klik tombol merah **`+ Catat Pengeluaran`**.
-2. Isi formulir:
-   - **Kategori**: Pilih `Operasional Kelas`, `Belanja ATK / Spidol`, `Konsumsi Acara`, `Kebersihan`, dsb.
-   - **Nominal**: Masukkan nominal belanja.
-   - **Unggah Bukti Nota**: Unggah file foto/struk belanja (format JPG/PNG).
-3. Klik **`Simpan Pengeluaran`**. Saldo kas kelas akan otomatis berkurang secara akurat.
-
-### 3. Memfilter Transaksi Multi-Periode
-Gunakan bilah filter di bagian atas tabel:
-- **Semua Periode**: Menampilkan seluruh riwayat transaksi dari awal pembukuan.
-- **📅 Per Hari**: Pilih tanggal spesifik untuk melihat mutasi di hari tersebut.
-- **🗓️ Per Bulan**: Navigasi ke bulan dan tahun tertentu.
-- **📊 Per Tahun**: Melihat mutasi tahunan.
-
-### 4. Mengekspor Buku Kas ke File CSV
-Klik tombol **`📥 Export CSV`** di pojok kanan atas untuk mengunduh rekap mutasi kas lengkap yang siap dibuka di Microsoft Excel atau Google Sheets.
+#### 🎴 Komponen & Card pada Halaman:
+1. **Hero Greeting & Badge Jabatan**:
+   - Menampilkan sapaan waktu (*Selamat Pagi/Siang/Sore/Malam*), nama pengguna, identitas kelas (`🏛️ HOARIZON • X-PPLG 1`), dan badge peran (`👑 Bendahara 1`).
+2. **Card Master Saldo Kas Aktif (*Royal Denim / Midnight Slate*)**:
+   - **Indikator Live Sinkron**: Titik hijau berkedip menandakan data terhubung langsung ke database secara *real-time*.
+   - **Nominal Saldo Kas Aktif**: Menghitung rumus: `Total Kas Masuk - Total Kas Keluar`.
+   - **Sub-info Bawah**: Menampilkan angka total kas masuk dan kas keluar akumulatif.
+3. **Card 6 Pintasan Fitur Cepat (*Quick Actions*)**:
+   - 💸 **Buku Kas (Cashflow)**: Lompat cepat ke pencatatan mutasi kas masuk dan keluar.
+   - 📋 **Iuran Bulanan**: Buka matriks pembayaran kas 4 minggu siswa.
+   - 💳 **Status Pembayaran**: Pantau daftar siswa yang sudah lunas atau memiliki tunggakan.
+   - 🎯 **Target Tabungan**: Lihat program dan target tabungan kelas yang sedang berjalan.
+   - 📎 **Bukti & Nota**: Akses arsip kuitansi dan struk belanja.
+   - 📊 **Laporan Keuangan**: Buka laporan audit keuangan dan cetak PDF/CSV.
+4. **4 Card Pilar Metrik Finansial**:
+   - 🟢 **Total Kas Masuk**: Akumulasi seluruh pemasukan uang kas kelas.
+   - 🔴 **Total Kas Keluar**: Akumulasi seluruh realisasi belanja operasional kelas.
+   - 🟠 **Target Tabungan**: Nominal tabungan yang sudah terkumpul terhadap target rencana (disertai *Progress Bar*).
+   - 🔵 **Kelunasan Iuran Kas**: Jumlah siswa yang telah melunasi iuran bulan berjalan (disertai persentase kelas).
+5. **Card Mutasi Kas Terkini (*Recent Transactions*)**:
+   - Menampilkan 5-10 transaksi terakhir lengkap dengan kategori, nominal, tanggal, nama pencatat (PIC), dan metode pembayaran (`CASH`, `SPAY`, `BCA`, dll.).
+   - Tombol **"Buku Kas Lengkap →"** untuk melihat daftar seluruh mutasi.
+6. **Card Target Tabungan Aktif**:
+   - Menampilkan program tabungan aktif, progres persentase, nominal terkumpul vs target, dan sisa hari tenggat waktu.
+   - Tombol **"+ Buka Program Tabungan Baru"** untuk membuat program tabungan baru bagi pengurus.
 
 ---
 
-## 📋 BAB 6: Panduan Iuran Bulanan 4 Minggu
+### 3.3. Buku Kas & Arus Kas (`/finance/cashflow`)
 
-Halaman **Iuran Kas Bulanan** (`/contributions`) menyajikan matriks pembayaran per minggu (Minggu 1 s/d Minggu 4) untuk setiap siswa.
+Buku besar pencatatan kas masuk (*Income*) dan kas keluar (*Expense*) kelas.
 
-### 1. Memilih Bulan (Navigasi Multi-Bulan)
-Gunakan komponen **MonthPicker** di kanan atas:
-- Klik tombol panah **`◀`** untuk mundur ke bulan sebelumnya.
-- Klik tombol panah **`▶`** untuk maju ke bulan berikutnya.
-- Atau pilih langsung nama bulan dan tahun dari dropdown.
-
-### 2. Alur Siswa: Mengajukan Pembayaran Iuran Pribadi
-1. Klik tombol biru **`+ Ajukan Pembayaran Saya`**.
-2. Pilih **Minggu Iuran** yang ingin dibayar (Minggu 1, 2, 3, atau 4).
-3. Masukkan nominal iuran (standar iuran kelas: Rp25.000 / minggu).
-4. Pilih **Metode Pembayaran** (misal: Transfer ShopeePay / Tunai).
-5. Unggah foto **Bukti Transfer / Struk**.
-6. Klik **`Kirim Pengajuan`**.
-7. Status iuran Anda pada minggu tersebut akan berubah menjadi **`⏳ PENDING`** menunggu persetujuan pengurus.
-
-### 3. Alur Pengurus: Memverifikasi Setoran Siswa
-1. Pengajuan baru akan muncul pada banner atas **"Pengajuan Pembayaran Menunggu Konfirmasi"** dan lonceng notifikasi.
-2. Klik tombol **`🔍 Tinjau`** pada pengajuan siswa yang bersangkutan.
-3. Periksa foto bukti transfer dan nominal yang disetor:
-   - Jika valid: Klik tombol hijau **`✓ Setujui Pembayaran (LUNAS)`**. Status siswa seketika berubah menjadi **`✅ LUNAS`** dan saldo kas kelas bertambah otomatis.
-   - Jika bukti palsu/nominal kurang: Klik tombol merah **`✗ Tolak Pengajuan`** dan berikan alasan penolakan.
-
----
-
-## 💳 BAB 7: Panduan Status Pembayaran & Pengingat
-
-Halaman **Status Pembayaran** (`/contributions/status`) berfungsi untuk mengawasi kepatuhan kelunasan iuran kas kelas.
-
-### 1. Membaca Status Kelunasan
-- **✅ Lunas**: Siswa telah membayar penuh iuran 4 minggu (Total Rp100.000/bulan).
-- **⏳ Belum Lunas**: Siswa masih memiliki sisa tunggakan iuran.
-- **Progress Bar**: Menunjukkan persentase pembayaran (e.g. `25% = 1/4 mgg`, `50% = 2/4 mgg`, `100% = 4/4 mgg`).
-
-### 2. Mengirim Notifikasi Pengingat Tagihan (1-Klik Reminder)
-- **Pengingat Perorangan**: Klik tombol **`📲 Ingatkan`** di baris siswa yang belum lunas. Pesan notifikasi pengingat otomatis masuk ke akun siswa tersebut.
-- **Pengingat Massal (*Batch Reminder*)**: Klik tombol **`📢 Tagih Otomatis`** di kanan atas untuk mengirimkan notifikasi penagihan secara serentak ke seluruh siswa yang belum tuntas bayar iuran.
+#### 🎴 Komponen & Card pada Halaman:
+1. **3 Card Ringkasan Arus Kas**:
+   - **Total Pemasukan (Hijau)**: Klik untuk memfilter hanya transaksi kas masuk.
+   - **Total Pengeluaran (Merah)**: Klik untuk memfilter hanya transaksi kas keluar.
+   - **Saldo Bersih Kas (Biru)**: Klik untuk menampilkan seluruh transaksi.
+2. **Card Toolbar Filter & Pencarian**:
+   - **Filter Periode (`PeriodFilter`)**:
+     - *Semua Periode*: Menampilkan seluruh riwayat transaksi tanpa batasan waktu.
+     - *📅 Per Hari*: Memilih transaksi pada tanggal spesifik (disertai tombol ◀ / ▶).
+     - *🗓️ Per Bulan*: Memilih transaksi pada bulan dan tahun tertentu.
+     - *📊 Per Tahun*: Memilih rekap tahunan tertentu.
+   - **Input Pencarian**: Cari transaksi berdasarkan nama kategori, keterangan, atau nama PIC.
+   - **Pills Jenis Mutasi**: Pilihan tombol *Semua Mutasi*, *↗ Pemasukan*, dan *↘ Pengeluaran* lengkap dengan jumlah transaksi.
+3. **Card Tabel Data / Mobile Card View**:
+   - Menampilkan kolom: Tanggal, Tipe, Kategori & Keterangan, Nominal, Metode Pembayaran, PIC Pencatat, dan Bukti Nota.
+   - Tombol **"🧾 Bukti"**: Klik untuk melihat pratinjau foto kuitansi/struk transaksi.
+   - Tombol **"Edit"** & **"Hapus"**: Bagi pengurus yang memiliki wewenang untuk memperbarui atau membatalkan mutasi.
+4. **Tombol Aksi Header**:
+   - **📥 Export CSV**: Mengunduh seluruh data tabel kas yang telah difilter ke file Excel/CSV berformat rapi.
+   - **+ Catat Pemasukan**: Membuka formulir pencatatan kas masuk.
+   - **+ Catat Pengeluaran**: Membuka formulir belanja/pengeluaran kas (wajib melampirkan keterangan dan bukti struk).
 
 ---
 
-## 🎯 BAB 8: Panduan Program Target Tabungan (Savings Target)
+### 3.4. Iuran Kas Bulanan 4 Minggu (`/contributions`)
 
-Halaman **Target Tabungan** (`/savings/targets`) digunakan untuk pengumpulan dana kegiatan khusus kelas (misal: Study Tour, Jaket Angkatan, Kas Sosial).
+Halaman rekapitulasi iuran kas siswa per minggu (Minggu 1, Minggu 2, Minggu 3, Minggu 4) dalam 1 bulan.
 
-### 1. Membuat Program Tabungan Baru (Pengurus)
-1. Klik tombol **`+ Buat Target Baru`**.
-2. Masukkan **Nama Program** (contoh: `Jaket Kelas Hoarizon 2026`) dan deskripsi kegiatan.
-3. Masukkan **Target Nominal Total** (contoh: `Rp5.000.000`).
-4. Tentukan **Tenggat Waktu (*Target Date*)**.
-5. Pilih **Visibilitas**:
-   - `🌐 Publik`: Terbuka untuk seluruh siswa di kelas.
-   - `🔒 Private`: Hanya diikuti oleh siswa-siswa tertentu yang dipilih.
-6. Pilih **Skema Iuran**:
-   - `⚖️ Bagi Rata (Equal Split)`: Total target dibagi rata otomatis ke seluruh peserta.
-   - `📌 Nominal Tetap (Fixed Amount)`: Setiap peserta menyetor nominal patokan yang sama.
-   - `🌱 Seikhlasnya (Voluntary)`: Peserta bebas menyetor nominal berapa saja.
-7. Klik **`Simpan Program Tabungan`**.
-
-### 2. Menyetor Iuran Target Tabungan
-1. Temukan kartu program tabungan yang ingin disetor ➡️ klik tombol **`💸 Setor Iuran`**.
-2. Masukkan nominal setoran dan lampirkan bukti transfer.
-3. Pengurus akan memverifikasi setoran, dan bilah progres (*Progress Bar*) program tabungan akan otomatis meningkat hingga 100%.
-
----
-
-## 📎 BAB 9: Panduan Manajemen Bukti & Nota Digital (Evidence)
-
-Halaman **Bukti & Nota** (`/evidence`) adalah arsip digital seluruh kuitansi belanja:
-
-1. Setiap pengeluaran belanja kas yang diinput oleh Bendahara otomatis terarsip di galeri nota.
-2. Klik tombol **`👁️ Lihat Nota`** pada struk untuk membuka tampilan *Full Resolution Preview Modal*.
-3. Setiap nota dilengkapi data tanggal belanja, nominal rupiah, pencatat (PIC), dan kategori barang.
+#### 🎴 Komponen & Card pada Halaman:
+1. **Pemilih Bulan & Tahun (`MonthPicker`)**:
+   - Tombol panah **◀ Bulan Lalu** dan **Bulan Depan ▶** untuk memeriksa iuran di masa lampau atau masa mendatang.
+   - Tombol cepat **"Bulan Ini"** untuk kembali ke bulan berjalan.
+2. **4 Card Indikator Iuran**:
+   - *Total Kas Terkumpul*: Nominal uang iuran yang telah lunas pada bulan yang dipilih.
+   - *Menunggu Konfirmasi*: Jumlah setoran iuran siswa yang menunggu verifikasi pengurus.
+   - *Sisa Tagihan Kelas*: Total nominal iuran yang belum disetorkan oleh siswa yang menunggak.
+   - *Total Anggota Kelas*: Jumlah siswa aktif di kelas.
+3. **Banner Pengajuan Pembayaran Menunggu Konfirmasi (Kuning Emas)**:
+   - Muncul otomatis jika ada siswa yang mengunggah bukti transfer iuran.
+   - Bagi Pengurus (Ketua Kelas / Bendahara / Sekretaris), terdapat tombol **"🔍 Tinjau"** untuk memeriksa foto bukti transfer dan mengonfirmasi status menjadi **LUNAS** atau **Ditolak**.
+4. **Card Matriks Iuran 4 Minggu**:
+   - Kolom: Nama Siswa, M1, M2, M3, M4, Total Terbayar, dan Aksi.
+   - **Badge Status Minggu**:
+     - 🟢 **Rp25.000 / LUNAS**: Siswa telah membayar iuran pada minggu tersebut.
+     - 🟡 **PENDING**: Pengajuan pembayaran sedang ditinjau pengurus.
+     - ⚪ **Belum Bayar**: Siswa belum membayar iuran pada minggu tersebut.
+   - Klik pada chip minggu untuk mengubah status (bagi pengurus) atau melihat detail pembayaran.
+5. **Tombol "+ Ajukan Pembayaran Saya"**:
+   - Bagi siswa/anggota untuk memilih minggu yang ingin dibayar, memilih metode transfer (*CASH*, *BCA*, *ShopeePay*, *SeaBank*, dll.), dan mengunggah foto struk/screenshot mutasi.
 
 ---
 
-## 📈 BAB 10: Panduan Laporan Keuangan & Audit Log
+### 3.5. Status Pembayaran & Monitoring Siswa (`/contributions/status`)
 
-### 1. Halaman Laporan Finansial (`/finance/reports`)
-- Menampilkan grafik komparasi kas masuk vs kas keluar.
-- Menyajikan rasio efisiensi keuangan kelas dan laba/rugi bersih (*Net Cashflow*).
-- Tombol **Cetak Laporan PDF** dan **Ekspor CSV** untuk diserahkan kepada Wali Kelas atau Kepala Sekolah saat evaluasi akhir semester.
+Halaman pemantauan kelunasan siswa dan pengiriman notifikasi pengingat iuran (*payment reminder*).
 
-### 2. Halaman Log Audit Aktivitas (`/audit`)
-- Mencatat seluruh jejak digital sistem: *Siapa yang menambah transaksi, siapa yang menyetujui setoran, kapan data diubah, dan kapan data dihapus*.
-- Menjamin tidak ada kecurangan (*fraud*) atau manipulasi data kas di belakang layar.
-
----
-
-## 🔔 BAB 11: Sistem Notifikasi Interaktif
-
-Ikon lonceng (🔔) di bar atas memberikan peringatan *real-time* kepada masing-masing pengguna:
-
-1. **Kategori Notifikasi**:
-   - 💳 **Tagihan Iuran**: Pengingat pembayaran kas bulanan yang belum tuntas.
-   - 💸 **Pembaruan Kas**: Informasi pencatatan mutasi kas baru oleh bendahara.
-   - 📎 **Nota Baru**: Pemberitahuan upload struk belanja kelas.
-   - 🎯 **Target Tabungan**: Informasi progres program tabungan yang baru dibuat atau tercapai.
-2. **Aksi Cepat**:
-   - Klik langsung pada item notifikasi untuk menuju ke halaman terkait.
-   - Klik tombol **`✓ Tandai Semua Dibaca`** untuk membersihkan badge lonceng.
+#### 🎴 Komponen & Card pada Halaman:
+1. **4 Card KPI Status**:
+   - *Lunas Bulan Ini*: Menampilkan rasio siswa lunas (contoh: `20 / 25 Siswa`).
+   - *Belum Lunas*: Jumlah siswa yang masih memiliki tunggakan.
+   - *Total Terkumpul*: Nominal iuran yang sudah masuk.
+   - *Sisa Tunggakan*: Nominal iuran yang belum masuk ke kas kelas.
+2. **Toolbar Filter Status**:
+   - Tombol filter cepat: **Semua**, **Lunas**, dan **Belum Lunas**.
+3. **Fitur Pengingat Tagihan (Reminder System)**:
+   - **Tombol "📲 Ingatkan" (Per Siswa)**: Mengirimkan pesan notifikasi langsung ke lonceng notifikasi akun siswa yang bersangkutan berisi rincian sisa tunggakan.
+   - **Tombol "📢 Tagih Otomatis" (Header Massal)**: Mengirimkan pengingat notifikasi serentak ke seluruh siswa yang belum melunasi iuran dalam 1 klik.
+4. **Tampilan Tabel (Desktop) & Kartu Vertikal (Mobile)**:
+   - Menampilkan progres bar kelunasan, tarif iuran, nominal terbayar, dan sisa tagihan per siswa.
 
 ---
 
-## 📱 BAB 12: Panduan Tampilan Responsif (Mobile vs Desktop)
+### 3.6. Program Target Tabungan (`/savings/targets`)
 
-Kasly dirancang adaptif untuk semua jenis perangkat:
+Halaman pengelolaan program tabungan kelas jangka pendek maupun jangka panjang (contoh: *Wisata Kelas*, *Baju Jurusan*, *Kas Sosial*, *Kunjungan Industri*).
 
-### 📱 Pada Layar Smartphone (Mobile View):
-- Hadir **Bilah Navigasi Bawah (*Bottom Navigation Bar*)** dengan tombol besar yang mudah dijangkau jempol: *Beranda*, *Buku Kas*, *Iuran*, *Target*, dan *Laporan*.
-- Tabel data bertransformasi otomatis menjadi **Kartu Vertikal Ringkas (*Card View*)** agar tidak perlu digeser-geser ke samping.
-- Menu profil dan notifikasi otomatis menyesuaikan lebar layar ponsel agar tidak terpotong.
-
-### 🖥️ Pada Layar Laptop / Monitor (Desktop View):
-- Menampilkan **Sidebar Navigasi Kiri** lengkap dengan submenu yang bisa dilipat (*collapsible*).
-- Halaman Login menampilkan format **2 Kolom Modern** (Kolom Showcase Fitur di kiri & Kartu Login di kanan).
-- Tabel mutasi menyajikan multi-kolom komprehensif lengkap dengan badge metode pembayaran.
-
----
-
-## ❓ BAB 13: FAQ & Solusi Masalah Umum (Troubleshooting)
-
-### Q1: Saya lupa kata sandi akun saya, bagaimana cara masuk?
-> **Solusi:** Hubungi **Ketua Kelas** atau **Bendahara 1**. Pengurus dapat mengatur ulang (*reset*) kata sandi akun Anda melalui menu *Members & Access* (`/members`).
-
-### Q2: Saya salah menginput nominal kas masuk/keluar, apakah bisa diperbaiki?
-> **Solusi:** Ya. Pengurus (Ketua Kelas / Bendahara) dapat membuka menu **Buku Kas**, klik tombol **`Edit`** pada baris transaksi yang salah, perbaiki nominalnya, lalu klik **`Simpan Perubahan`**.
-
-### Q3: Foto bukti transfer saya gagal diunggah, apa penyebabnya?
-> **Solusi:** Pastikan ukuran file gambar bukti transfer tidak melebihi 5 MB dan berformat standard (`.jpg`, `.jpeg`, `.png`, atau `.webp`).
-
-### Q4: Apakah data kas tetap aman jika server di-restart?
-> **Solusi:** Sangat aman. Seluruh data transaksi, akun, bukti nota, dan log audit tersimpan di basis data cloud **Neon Serverless PostgreSQL** yang terenkripsi dan otomatis ter-backup.
+#### 🎴 Komponen & Card pada Halaman:
+1. **Card Target Tabungan**:
+   - **Badge Visibilitas**: 🌐 *Publik* (seluruh kelas) atau 🔒 *Private* (hanya anggota tertentu yang dipilih).
+   - **Badge Skema Iuran**:
+     - ⚖️ *Bagi Rata (Equal Split)*: Target total dibagi rata otomatis ke seluruh peserta.
+     - 📌 *Nominal Tetap (Fixed Amount)*: Setiap anggota menyetor nominal yang ditentukan.
+     - 🌱 *Seikhlasnya (Voluntary)*: Besaran setoran sukarela tanpa target per orang.
+   - **Bilah Progres (*Progress Bar*)**: Visualisasi persentase dana terkumpul terhadap target nominal.
+   - **Info Waktu & Tenggat**: Menghitung sisa hari (*Days Remaining*) menuju tanggal target tercapai.
+   - **Daftar Peserta (*Participant Status*)**: Menampilkan daftar peserta yang sudah lunas, pending, atau belum menyetor.
+   - **Tombol "💵 Setor Iuran"**: Anggota dapat menyetor iuran tabungan dan melampirkan bukti transfer.
+2. **Tombol "+ Buat Target Baru" (Pengurus)**:
+   - Formulir pembuatan program tabungan dengan pilihan nama, deskripsi, nominal target, tanggal mulai, tenggat waktu, visibilitas, dan skema pembagian.
 
 ---
 
-<p align="center">
-  <b>HOARIZON • KASLY v1.0</b><br/>
-  <i>"Menghadirkan Transparansi Finansial Kelas yang Modern, Cepat, dan Berwibawa."</i><br/>
-  Hak Cipta © 2026 <b>Suami Marie • HOARIZON Dev</b>. Seluruh hak dilindungi undang-undang.
-</p>
+### 3.7. Bukti & Nota Digital (`/evidence`)
+
+Arsip visual kuitansi, struk belanja ATK/konsumsi, dan slip transfer pembayaran.
+
+#### 🎴 Komponen & Card pada Halaman:
+1. **Galeri Bukti Digital**:
+   - Kartu thumbnail foto struk/nota belanja lengkap dengan tanggal, kategori, nominal, dan nama pengunggah.
+2. **Modal Pratinjau Gambar (*Image Lightbox*)**:
+   - Klik pada gambar untuk memperbesar bukti transaksi secara jernih dan mendetail.
+
+---
+
+### 3.8. Laporan Keuangan & Ekspor PDF/CSV (`/finance/reports`)
+
+Halaman rekapitulasi audit keuangan kelas untuk keperluan laporan ke Wali Kelas, Sekolah, atau Orang Tua Siswa.
+
+#### 🎴 Komponen & Card pada Halaman:
+1. **Filter Periode Laporan**:
+   - Memilih rentang laporan berdasarkan bulan atau tahun buku kas.
+2. **Card Neraca Keuangan**:
+   - Rekap total pemasukan, total pengeluaran belanja kelas, mutasi bersih, dan saldo akhir kas.
+3. **Fitur Ekspor Dokumen**:
+   - **📥 Download CSV**: Mengunduh data terstruktur untuk diolah di Microsoft Excel / Google Sheets.
+   - **📄 Cetak Laporan (PDF)**: Mencetak dokumen laporan keuangan resmi lengkap dengan kop kelas, tabel mutasi, rekapitulasi, dan tanda tangan pengurus.
+
+---
+
+### 3.9. Anggota Kelas (`/members`)
+
+Direktori data seluruh anggota siswa, pengurus kelas, dan wali kelas yang terdaftar.
+
+#### 🎴 Komponen & Card pada Halaman:
+1. **Daftar Anggota & Kontak**:
+   - Menampilkan nama lengkap, jenis kelamin, role/jabatan, email, dan status keaktifan.
+2. **Pencarian Anggota**:
+   - Cari anggota berdasarkan nama atau jabatan.
+
+---
+
+### 3.10. Hak Akses & Peran (`/permissions`)
+
+Pengaturan hak izin akses fitur (*RBAC Management*) bagi Ketua Kelas.
+
+#### 🎴 Komponen & Card pada Halaman:
+1. **Matriks Perizinan**:
+   - Pengaturan hak membuat (*create*), mengedit (*update*), menghapus (*delete*), atau melihat (*read*) pada modul Kas, Iuran, Bukti, dan Pengaturan.
+
+---
+
+### 3.11. Log Audit Aktivitas Sistem (`/audit`)
+
+Rekam jejak digital (*Audit Trail*) untuk mencegah kecurangan atau manipulasi data keuangan.
+
+#### 🎴 Komponen & Card pada Halaman:
+1. **Tabel Riwayat Aktivitas**:
+   - Mencatat waktu (*timestamp*), nama pelaku (user), jenis aksi (`CREATE`, `UPDATE`, `DELETE`, `VERIFY`), modul terkait, dan detail perubahan data.
+
+---
+
+### 3.12. Pengaturan Profil Akun (`/settings`)
+
+Halaman personalisasi akun pengguna.
+
+#### 🎴 Komponen & Card pada Halaman:
+1. **Card Informasi Profil**:
+   - Menampilkan nama lengkap, email, dan jabatan akun saat ini.
+2. **Card Ganti Kata Sandi (Password)**:
+   - Formulir pembaruan kata sandi akun secara mandiri.
+
+---
+
+## 4. PANDUAN NAVIGASI GLOBAL (TOPBAR & MOBILE NAVIGATION)
+
+Navigasi atas (*Topbar*) dan navigasi bawah (*Bottom Navigation*) dapat diakses dari seluruh halaman aplikasi:
+
+### 🔝 Topbar Navigasi Atas:
+1. **Tombol Menu Hamburger (Mobile)**:
+   - Membuka laci navigasi (*Sidebar Drawer*) di sisi kiri pada layar smartphone.
+2. **Kotak Pencarian Global (`⌘K` / `Ctrl+K`)**:
+   - Pencarian cepat transaksi, nama anggota, iuran, atau target tabungan di desktop.
+3. **Tombol Pengalih Tema 1-Klik (`ThemeToggle`)**:
+   - Ikon **☀️ Matahari** (Mode Terang) dan **🌙 Bulan** (Mode Gelap).
+   - Klik untuk beralih mode secara instan tanpa memuat ulang halaman.
+4. **Lonceng Notifikasi Dropdown (`NotificationDropdown`)**:
+   - Menampilkan pemberitahuan terkini mengenai:
+     - 🔔 *Pemasukan / Pengeluaran Kas Baru*
+     - 🧾 *Bukti Nota Belanja Baru yang Diunggah*
+     - 🎯 *Pembaruan Program Tabungan Kelas*
+     - 💳 *Pemberitahuan Pengingat Iuran Siswa*
+   - Tombol **"✓ Tandai Semua Dibaca"** untuk membersihkan badge merah notifikasi.
+5. **Menu Profil & Tombol Logout (`ProfileDropdown`)**:
+   - Menampilkan avatar inisial, nama pengguna, dan badge jabatan.
+   - **Segmented Theme Picker**: Pilihan visual 3 mode: *Terang* | *Gelap* | *Sistem*.
+   - **Tombol Keluar Akun (*Logout*)**: Membuka dialog konfirmasi modal animasi sebelum sesi akun diakhiri dengan aman.
+
+---
+
+### 📱 Bottom Navigation Bar (Khusus Layar Smartphone):
+Terletak di bagian bawah layar ponsel untuk navigasi cepat menggunakan satu tangan:
+- 🏠 **Beranda**: Halaman Dashboard & Live Saldo.
+- 💸 **Buku Kas**: Halaman mutasi kas masuk/keluar.
+- 📋 **Iuran**: Halaman matriks iuran 4 minggu.
+- 🎯 **Target**: Halaman program target tabungan.
+- 📊 **Laporan**: Haporan rekapitulasi keuangan & ekspor.
+
+---
+
+## 5. TANYA JAWAB UMUM & SOLUSI MASALAH (FAQ)
+
+### ❓ Q1: Bagaimana cara siswa membayar iuran kas kelas mingguan?
+> **Jawaban**:
+> 1. Buka menu **Iuran** (`/contributions`).
+> 2. Klik tombol **"+ Ajukan Pembayaran Saya"**.
+> 3. Pilih minggu yang ingin dibayar (contoh: *Minggu 1* atau *Minggu 2*).
+> 4. Pilih metode pembayaran (contoh: *Transfer BCA*, *ShopeePay*, atau *Tunai ke Bendahara*).
+> 5. Lampirkan foto bukti struk/screenshot mutasi transfer.
+> 6. Klik **"Kirim Pengajuan Pembayaran"**. Status akan menjadi **PENDING** dan otomatis berubah menjadi **LUNAS** setelah diverifikasi oleh Bendahara atau Ketua Kelas.
+
+---
+
+### ❓ Q2: Bagaimana cara Bendahara memverifikasi bukti setoran siswa?
+> **Jawaban**:
+> 1. Buka halaman **Iuran** (`/contributions`) atau **Target Tabungan** (`/savings/targets`).
+> 2. Pada banner emas bagian atas bertuliskan *"Pengajuan Pembayaran Menunggu Konfirmasi"*, klik tombol **"🔍 Tinjau"**.
+> 3. Periksa foto struk transfer, nominal, dan tanggal yang dilampirkan siswa.
+> 4. Klik tombol **"✅ Setujui Pembayaran"** untuk mengonfirmasi status menjadi LUNAS, atau tombol **"❌ Tolak"** jika bukti tidak valid.
+
+---
+
+### ❓ Q3: Mengapa saldo kas kelas bertambah atau berkurang secara otomatis?
+> **Jawaban**:
+> Saldo kas kelas terhubung secara terpusat (*Centralized Database Engine*). Setiap ada transaksi pemasukan yang disetujui, saldo otomatis bertambah. Setiap ada transaksi belanja/pengeluaran yang dicatat pengurus, saldo otomatis berkurang secara akurat.
+
+---
+
+### ❓ Q4: Bagaimana cara mencetak laporan keuangan kas ke format PDF atau Excel?
+> **Jawaban**:
+> 1. Buka halaman **Laporan Keuangan** (`/finance/reports`) atau **Buku Kas** (`/finance/cashflow`).
+> 2. Pilih filter periode yang diinginkan (*Bulan Ini*, *Bulan Lalu*, atau *Tahun Tertentu*).
+> 3. Klik tombol **"📥 Export CSV"** untuk file Excel, atau klik **"📄 Cetak Laporan (PDF)"** untuk mencetak laporan resmi siap tanda tangan.
+
+---
+
+### ❓ Q5: Apakah data keuangan aman jika aplikasi dibuka di perangkat lain?
+> **Jawaban**:
+> **Sangat aman**. Data disimpan di cloud database terenkripsi (PostgreSQL / Neon) dan setiap aksi penting (tambah/edit/hapus) dilindungi oleh sistem otentikasi NextAuth serta dicatat dalam **Log Audit** (`/audit`).
+
+---
+
+**HOARIZON • KASLY v1.0**  
+*Dibuat dengan 💙 untuk Transparansi & Akuntabilitas Keuangan Kelas*  
+Hak Cipta © 2026 **Suami Marie • HOARIZON Dev**. Seluruh hak dilindungi undang-undang.

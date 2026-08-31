@@ -7,8 +7,10 @@
   <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
   <img src="https://img.shields.io/badge/Drizzle_ORM-SQLite-C5F74F?style=for-the-badge&logo=drizzle" alt="Drizzle ORM" />
   <img src="https://img.shields.io/badge/NextAuth.js-v5-purple?style=for-the-badge" alt="NextAuth" />
-  <img src="https://img.shields.io/badge/Theme-Dark%20%26%20Light%20Mode-orange?style=for-the-badge" alt="Theme" />
+  <img src="https://img.shields.io/badge/Guidebook-Dokumentasi%20Lengkap-emerald?style=for-the-badge&logo=gitbook" alt="Guidebook" />
 </p>
+
+> 📚 **Buku Panduan Penggunaan Lengkap**: Silakan baca file [**`GUIDEBOOK.md`**](file:///e:/Code/H.MP%20Dev/Hoarizon/kasly-app/GUIDEBOOK.md) untuk panduan detail cara penggunaan setiap halaman, card, dan alur kerja aplikasi.
 
 ---
 
