@@ -305,7 +305,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <div className="p-4 border-t border-[var(--color-baby-blue-200)]/20 dark:border-slate-800 space-y-1">
           <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[var(--color-denim)] dark:text-sky-400 opacity-80">
             <span>✨</span>
-            <span>CopyRight @Pacar Marie</span>
+            <span>CopyRight @Suami Marie</span>
           </div>
           <div className="text-[10px] text-[var(--color-denim-light)] dark:text-slate-500 opacity-70">
             KASLY v1.0 — Made with 💙

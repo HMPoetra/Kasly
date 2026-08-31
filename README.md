@@ -182,4 +182,4 @@ Buka [http://localhost:3000](http://localhost:3000) pada browser Anda untuk meng
 ## 🔒 Hak Cipta & Lisensi (License)
 
 Dikembangkan dengan 💙 oleh tim **HOARIZON**.  
-Hak Cipta © 2026 **Pacar Marie • HOARIZON Dev**. Seluruh hak dilindungi undang-undang.
+Hak Cipta © 2026 **Suami Marie • HOARIZON Dev**. Seluruh hak dilindungi undang-undang.
