@@ -1,26 +1,487 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ============================================
+   KASLY Design System — "3D Puffy Letter Collage / Digital Scrapbook"
+   Blue Gingham + Denim + Playful + Premium
+   ============================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ---- Color Palette ---- */
+  --color-baby-blue: #A8D8EA;
+  --color-baby-blue-light: #D4EEFF;
+  --color-baby-blue-50: #EDF6FF;
+  --color-baby-blue-100: #D4EEFF;
+  --color-baby-blue-200: #A8D8EA;
+  --color-baby-blue-300: #7FC4DB;
+  --color-baby-blue-400: #5BB0CC;
+
+  --color-denim: #2B6CB0;
+  --color-denim-light: #4A90D9;
+  --color-denim-dark: #1A4971;
+  --color-denim-darker: #0F2D47;
+
+  --color-accent: #1E3A5F;
+  --color-accent-light: #2D5283;
+  --color-accent-dark: #0F1D2F;
+
+  --color-off-white: #FAFBFE;
+  --color-cream: #F5F0E8;
+  --color-paper: #FFFEF9;
+
+  /* Financial semantic colors */
+  --color-income: #48BB78;
+  --color-income-light: #C6F6D5;
+  --color-income-bg: #F0FFF4;
+  --color-expense: #F56565;
+  --color-expense-light: #FED7D7;
+  --color-expense-bg: #FFF5F5;
+  --color-pending: #ECC94B;
+  --color-pending-light: #FEFCBF;
+  --color-pending-bg: #FFFFF0;
+  --color-info: #4299E1;
+  --color-info-light: #BEE3F8;
+  --color-info-bg: #EBF8FF;
+
+  /* Dark mode overrides */
+  --color-dark-bg: #0D1B2A;
+  --color-dark-surface: #1B2838;
+  --color-dark-surface-2: #233345;
+  --color-dark-border: #2D4A6A;
+  --color-dark-text: #E2E8F0;
+  --color-dark-text-muted: #94A3B8;
+
+  /* ---- Typography ---- */
+  --font-display: 'Nunito', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* ---- Puffy Shadows ---- */
+  --shadow-puffy-sm: 0 2px 4px rgba(43, 108, 176, 0.1), 0 4px 8px rgba(43, 108, 176, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  --shadow-puffy: 0 4px 8px rgba(43, 108, 176, 0.12), 0 8px 16px rgba(43, 108, 176, 0.08), inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  --shadow-puffy-lg: 0 6px 12px rgba(43, 108, 176, 0.14), 0 12px 24px rgba(43, 108, 176, 0.1), inset 0 2px 0 rgba(255, 255, 255, 0.25);
+  --shadow-puffy-xl: 0 8px 16px rgba(43, 108, 176, 0.16), 0 16px 32px rgba(43, 108, 176, 0.12), inset 0 3px 0 rgba(255, 255, 255, 0.2);
+
+  --shadow-denim: 0 4px 12px rgba(30, 58, 95, 0.2), 0 2px 4px rgba(30, 58, 95, 0.1);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(43, 108, 176, 0.08);
+  --shadow-card-hover: 0 2px 6px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(43, 108, 176, 0.12);
+
+  /* ---- Animations ---- */
+  --ease-puffy: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Layout ---- */
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 72px;
+  --header-height: 64px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+:root {
+  --background: var(--color-off-white);
+  --foreground: var(--color-accent-dark);
+}
+
+html.dark,
+[data-theme="dark"] {
+  --background: #0b1329;
+  --foreground: #f1f5f9;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* ============================================
+   GINGHAM BACKGROUND PATTERN
+   ============================================ */
+
+.bg-gingham {
+  background-color: var(--color-off-white);
+  background-image:
+    linear-gradient(45deg, rgba(168, 216, 234, 0.12) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(168, 216, 234, 0.12) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(168, 216, 234, 0.12) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(168, 216, 234, 0.12) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+}
+
+.bg-gingham-subtle {
+  background-color: var(--color-off-white);
+  background-image:
+    linear-gradient(45deg, rgba(168, 216, 234, 0.06) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(168, 216, 234, 0.06) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(168, 216, 234, 0.06) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(168, 216, 234, 0.06) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+/* Dark mode gingham */
+[data-theme="dark"] .bg-gingham,
+[data-theme="dark"] .bg-gingham-subtle {
+  background-color: var(--color-dark-bg);
+  background-image:
+    linear-gradient(45deg, rgba(43, 108, 176, 0.08) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(43, 108, 176, 0.08) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(43, 108, 176, 0.08) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(43, 108, 176, 0.08) 75%);
+}
+
+/* ============================================
+   DENIM TEXTURE
+   ============================================ */
+
+.bg-denim {
+  background: linear-gradient(135deg, var(--color-denim) 0%, var(--color-denim-dark) 100%);
+  position: relative;
+}
+
+.bg-denim::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='rgba(255,255,255,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.bg-denim-dark {
+  background: linear-gradient(135deg, var(--color-denim-dark) 0%, var(--color-denim-darker) 100%);
+}
+
+/* ============================================
+   PUFFY 3D EFFECTS
+   ============================================ */
+
+.puffy {
+  border-radius: 16px;
+  box-shadow: var(--shadow-puffy);
+  transition: all 0.3s var(--ease-puffy);
+}
+
+.puffy:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-puffy-lg);
+}
+
+.puffy:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: var(--shadow-puffy-sm);
+}
+
+.puffy-text {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 4px rgba(43, 108, 176, 0.15),
+    0 4px 8px rgba(43, 108, 176, 0.1);
+}
+
+.puffy-letter {
+  display: inline-block;
+  font-weight: 900;
+  background: linear-gradient(
+    180deg,
+    var(--color-baby-blue-light) 0%,
+    var(--color-baby-blue) 50%,
+    var(--color-denim-light) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(43, 108, 176, 0.3));
+  text-shadow: none;
+}
+
+/* ============================================
+   SCRAPBOOK DECORATIVE ELEMENTS
+   ============================================ */
+
+.tape {
+  position: relative;
+}
+
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 60px;
+  height: 20px;
+  background: rgba(255, 248, 220, 0.7);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.sticker {
+  transform: rotate(-2deg);
+  transition: transform 0.3s var(--ease-puffy);
+}
+
+.sticker:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.stitching {
+  border: 2px dashed var(--color-denim-light);
+  border-radius: 12px;
+}
+
+.paper-card {
+  background: var(--color-paper);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(168, 216, 234, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.paper-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+[data-theme="dark"] .paper-card {
+  background: var(--color-dark-surface);
+  border-color: var(--color-dark-border);
+}
+
+.denim-card {
+  background: linear-gradient(135deg, var(--color-denim) 0%, var(--color-denim-dark) 100%);
+  color: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow-denim);
+  position: relative;
+  overflow: hidden;
+}
+
+.denim-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='rgba(255,255,255,0.04)' fill-rule='evenodd'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.fabric-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  background: var(--color-cream);
+  border: 1px solid rgba(43, 108, 176, 0.15);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   FINANCIAL STATUS CHIPS
+   ============================================ */
+
+.status-paid {
+  background: var(--color-income-light);
+  color: #22543D;
+  border: 1px solid rgba(72, 187, 120, 0.3);
+}
+
+.status-partial {
+  background: var(--color-info-light);
+  color: #2A4365;
+  border: 1px solid rgba(66, 153, 225, 0.3);
+}
+
+.status-pending {
+  background: var(--color-pending-light);
+  color: #744210;
+  border: 1px solid rgba(236, 201, 75, 0.3);
+}
+
+.status-unpaid {
+  background: var(--color-expense-light);
+  color: #742A2A;
+  border: 1px solid rgba(245, 101, 101, 0.3);
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(43, 108, 176, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(43, 108, 176, 0.35);
+}
+
+/* ============================================
+   RESPONSIVE HELPERS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .bg-gingham {
+    background-size: 12px 12px;
+    background-image:
+      linear-gradient(45deg, rgba(168, 216, 234, 0.06) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(168, 216, 234, 0.06) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(168, 216, 234, 0.06) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(168, 216, 234, 0.06) 75%);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   ANIMATED NUMBER COUNTER HELPER
+   ============================================ */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(168, 216, 234, 0.15) 25%,
+    rgba(168, 216, 234, 0.3) 50%,
+    rgba(168, 216, 234, 0.15) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(43, 108, 176, 0.1) 25%,
+    rgba(43, 108, 176, 0.2) 50%,
+    rgba(43, 108, 176, 0.1) 75%
+  );
+  background-size: 200% 100%;
+}
+
+/* ============================================
+   FORM CONTROLS & TEXT CONTRAST READABILITY
+   ============================================ */
+
+input,
+select,
+textarea {
+  color: #0f1d2f;
+  background-color: #ffffff;
+  font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+  opacity: 0.9;
+}
+
+select {
+  color: #0f1d2f;
+}
+
+select option {
+  color: #0f1d2f;
+  background-color: #ffffff;
+  font-weight: 600;
+  padding: 8px 12px;
+}
+
+select option:checked,
+select option:hover {
+  background-color: #e2e8f0;
+  color: #1e3a5f;
+}
+
+label {
+  color: #1e3a5f;
+  font-weight: 600;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+html.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html.dark body,
+[data-theme="dark"] body {
+  background-color: #0b1329;
+  color: #f1f5f9;
+}
+
+html.dark input,
+html.dark select,
+html.dark textarea,
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  color: #f8fafc;
+  background-color: #13203f;
+  border-color: #263859;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #94a3b8;
+}
+
+html.dark select option,
+[data-theme="dark"] select option {
+  color: #f8fafc;
+  background-color: #13203f;
+}
+
+html.dark label,
+[data-theme="dark"] label {
+  color: #cbd5e1;
+}
+
+html.dark .paper-card,
+[data-theme="dark"] .paper-card {
+  background: #0f172a;
+  border-color: #1e293b;
+  color: #f1f5f9;
+}
+
+
