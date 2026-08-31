@@ -251,103 +251,184 @@ export default function PaymentStatusPage() {
             Tidak ada anggota yang cocok dengan pencarian / filter.
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b-2 border-[var(--color-baby-blue-200)]/30">
-                  <th className="text-left py-3 px-3 text-xs font-bold text-[var(--color-denim)]">Nama Anggota</th>
-                  <th className="text-center py-3 px-2 text-xs font-bold text-[var(--color-denim)]">Status Kelunasan</th>
-                  <th className="text-right py-3 px-3 text-xs font-bold text-[var(--color-denim)]">Sudah Dibayar</th>
-                  <th className="text-right py-3 px-3 text-xs font-bold text-[var(--color-denim)]">Sisa Tagihan</th>
-                  <th className="text-center py-3 px-2 text-xs font-bold text-[var(--color-denim)]">Progress</th>
-                  <th className="text-center py-3 px-3 text-xs font-bold text-[var(--color-denim)]">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredMembers.map((m, i) => {
-                  const isLunas = m.total >= targetPerMonth;
-                  const sisa = Math.max(0, targetPerMonth - m.total);
-                  const progressPct = Math.min(100, Math.round((m.total / targetPerMonth) * 100));
+          <>
+            {/* Desktop Table View */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b-2 border-slate-200 dark:border-slate-800">
+                    <th className="text-left py-3 px-3 text-xs font-bold text-slate-700 dark:text-slate-300">Nama Anggota</th>
+                    <th className="text-center py-3 px-2 text-xs font-bold text-slate-700 dark:text-slate-300">Status Kelunasan</th>
+                    <th className="text-right py-3 px-3 text-xs font-bold text-slate-700 dark:text-slate-300">Sudah Dibayar</th>
+                    <th className="text-right py-3 px-3 text-xs font-bold text-slate-700 dark:text-slate-300">Sisa Tagihan</th>
+                    <th className="text-center py-3 px-2 text-xs font-bold text-slate-700 dark:text-slate-300">Progress</th>
+                    <th className="text-center py-3 px-3 text-xs font-bold text-slate-700 dark:text-slate-300">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredMembers.map((m, i) => {
+                    const isLunas = m.total >= targetPerMonth;
+                    const sisa = Math.max(0, targetPerMonth - m.total);
+                    const progressPct = Math.min(100, Math.round((m.total / targetPerMonth) * 100));
 
-                  return (
-                    <motion.tr
-                      key={m.userId}
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.02 }}
-                      className="border-b border-[var(--color-baby-blue-200)]/10 hover:bg-[var(--color-baby-blue-50)]/30 transition-colors"
-                    >
-                      <td className="py-3 px-3">
-                        <p className="font-semibold text-xs text-[var(--color-accent)]">{m.name}</p>
+                    return (
+                      <motion.tr
+                        key={m.userId}
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.02 }}
+                        className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition-colors"
+                      >
+                        <td className="py-3 px-3">
+                          <p className="font-semibold text-xs text-slate-900 dark:text-slate-100">{m.name}</p>
+                          <div className="flex items-center gap-1.5 mt-0.5">
+                            <Badge variant={m.gender === 'M' ? 'info' : 'default'} className="text-[9px] py-0 px-1">
+                              {m.gender === 'M' ? 'Laki-laki' : 'Perempuan'}
+                            </Badge>
+                            <span className="text-[10px] text-slate-500 dark:text-slate-400">Tarif: Rp25.000/mgg</span>
+                          </div>
+                        </td>
+
+                        <td className="py-3 px-2 text-center">
+                          <Badge variant={isLunas ? 'income' : 'expense'}>
+                            {isLunas ? '✅ Lunas' : '⏳ Belum Lunas'}
+                          </Badge>
+                        </td>
+
+                        <td className="py-3 px-3 text-right font-bold text-xs text-emerald-600 dark:text-emerald-400">
+                          {formatRupiah(m.total)}
+                        </td>
+
+                        <td className={`py-3 px-3 text-right font-bold text-xs ${sisa === 0 ? 'text-slate-400' : 'text-rose-600 dark:text-rose-400'}`}>
+                          {sisa === 0 ? 'Rp0' : formatRupiah(sisa)}
+                        </td>
+
+                        <td className="py-3 px-2 text-center">
+                          <div className="w-24 mx-auto">
+                            <div className="flex items-center justify-between text-[9px] text-slate-500 dark:text-slate-400 mb-1">
+                              <span>{progressPct}%</span>
+                              <span>{m.total / 25000}/4 mgg</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                              <div
+                                className={`h-full rounded-full ${isLunas ? 'bg-emerald-500' : 'bg-amber-500'}`}
+                                style={{ width: `${progressPct}%` }}
+                              />
+                            </div>
+                          </div>
+                        </td>
+
+                        <td className="py-3 px-3 text-center">
+                          <div className="flex items-center justify-center gap-1.5">
+                            {isLunas ? (
+                              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">Tuntas ✨</span>
+                            ) : (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="!h-6 !text-[10px] !px-2 text-sky-600 dark:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800"
+                                onClick={async () => {
+                                  const res = await sendPaymentReminderAction(m.userId, sisa);
+                                  if (res.success) {
+                                    toast.success(
+                                      `Pengingat tunggakan ${formatRupiah(sisa)} berhasil dikirimkan ke lonceng notifikasi ${m.name}!`,
+                                      '📲 Pengingat Terkirim'
+                                    );
+                                  } else {
+                                    toast.error('Gagal mengirim notifikasi: ' + res.error);
+                                  }
+                                }}
+                              >
+                                📲 Ingatkan
+                              </Button>
+                            )}
+                          </div>
+                        </td>
+                      </motion.tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Card List View */}
+            <div className="md:hidden space-y-3">
+              {filteredMembers.map((m) => {
+                const isLunas = m.total >= targetPerMonth;
+                const sisa = Math.max(0, targetPerMonth - m.total);
+                const progressPct = Math.min(100, Math.round((m.total / targetPerMonth) * 100));
+
+                return (
+                  <div
+                    key={m.userId}
+                    className="p-3.5 bg-slate-50/80 dark:bg-slate-800/60 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 space-y-2.5"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100">{m.name}</h4>
                         <div className="flex items-center gap-1.5 mt-0.5">
                           <Badge variant={m.gender === 'M' ? 'info' : 'default'} className="text-[9px] py-0 px-1">
-                            {m.gender === 'M' ? 'Laki-laki' : 'Perempuan'}
+                            {m.gender === 'M' ? 'L' : 'P'}
                           </Badge>
-                          <span className="text-[10px] text-[var(--color-denim-light)] opacity-70">Tarif: Rp25.000/mgg</span>
+                          <span className="text-[10px] text-slate-500 dark:text-slate-400">Rp25.000/mgg</span>
                         </div>
-                      </td>
+                      </div>
+                      <Badge variant={isLunas ? 'income' : 'expense'}>
+                        {isLunas ? '✅ Lunas' : '⏳ Belum'}
+                      </Badge>
+                    </div>
 
-                      <td className="py-3 px-2 text-center">
-                        <Badge variant={isLunas ? 'income' : 'expense'}>
-                          {isLunas ? '✅ Lunas' : '⏳ Belum Lunas'}
-                        </Badge>
-                      </td>
+                    <div className="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-slate-200/60 dark:border-slate-700/60">
+                      <div>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 block">Terbayar</span>
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400">{formatRupiah(m.total)}</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 block">Sisa Tagihan</span>
+                        <span className={`font-bold ${sisa === 0 ? 'text-slate-400' : 'text-rose-600 dark:text-rose-400'}`}>
+                          {sisa === 0 ? 'Rp0' : formatRupiah(sisa)}
+                        </span>
+                      </div>
+                    </div>
 
-                      <td className="py-3 px-3 text-right font-bold text-xs text-[var(--color-income)]">
-                        {formatRupiah(m.total)}
-                      </td>
+                    {/* Progress Bar */}
+                    <div>
+                      <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 mb-1">
+                        <span>Progress: {progressPct}%</span>
+                        <span>{m.total / 25000}/4 Minggu</span>
+                      </div>
+                      <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full ${isLunas ? 'bg-emerald-500' : 'bg-amber-500'}`}
+                          style={{ width: `${progressPct}%` }}
+                        />
+                      </div>
+                    </div>
 
-                      <td className={`py-3 px-3 text-right font-bold text-xs ${sisa === 0 ? 'text-[var(--color-denim-light)] opacity-40' : 'text-[var(--color-expense)]'}`}>
-                        {sisa === 0 ? 'Rp0' : formatRupiah(sisa)}
-                      </td>
-
-                      <td className="py-3 px-2 text-center">
-                        <div className="w-24 mx-auto">
-                          <div className="flex items-center justify-between text-[9px] text-[var(--color-denim-light)] mb-1">
-                            <span>{progressPct}%</span>
-                            <span>{m.total / 25000}/4 mgg</span>
-                          </div>
-                          <div className="w-full h-1.5 bg-[var(--color-baby-blue-50)] rounded-full overflow-hidden">
-                            <div
-                              className={`h-full rounded-full ${isLunas ? 'bg-[var(--color-income)]' : 'bg-[var(--color-pending)]'}`}
-                              style={{ width: `${progressPct}%` }}
-                            />
-                          </div>
-                        </div>
-                      </td>
-
-                      <td className="py-3 px-3 text-center">
-                        <div className="flex items-center justify-center gap-1.5">
-                          {isLunas ? (
-                            <span className="text-[10px] text-[var(--color-income)] font-semibold">Tuntas ✨</span>
-                          ) : (
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="!h-6 !text-[10px] !px-2 text-[var(--color-denim)] hover:bg-[var(--color-baby-blue-100)]"
-                              onClick={async () => {
-                                const res = await sendPaymentReminderAction(m.userId, sisa);
-                                if (res.success) {
-                                  toast.success(
-                                    `Pengingat tunggakan ${formatRupiah(sisa)} berhasil dikirimkan ke lonceng notifikasi ${m.name}!`,
-                                    '📲 Pengingat Terkirim'
-                                  );
-                                } else {
-                                  toast.error('Gagal mengirim notifikasi: ' + res.error);
-                                }
-                              }}
-                            >
-                              📲 Ingatkan
-                            </Button>
-                          )}
-                        </div>
-                      </td>
-                    </motion.tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                    {!isLunas && (
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          const res = await sendPaymentReminderAction(m.userId, sisa);
+                          if (res.success) {
+                            toast.success(
+                              `Pengingat tunggakan ${formatRupiah(sisa)} berhasil dikirimkan ke lonceng notifikasi ${m.name}!`,
+                              '📲 Pengingat Terkirim'
+                            );
+                          } else {
+                            toast.error('Gagal mengirim notifikasi: ' + res.error);
+                          }
+                        }}
+                        className="w-full py-1.5 bg-sky-50 dark:bg-sky-950/80 hover:bg-sky-100 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 rounded-xl text-xs font-bold text-center cursor-pointer transition-colors"
+                      >
+                        📲 Kirim Pengingat Notifikasi
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </>
         )}
       </Card>
     </div>

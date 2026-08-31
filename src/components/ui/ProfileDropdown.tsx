@@ -134,7 +134,7 @@ export function ProfileDropdown() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="absolute right-0 mt-2.5 w-72 sm:w-80 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.25)] z-50 overflow-hidden"
+            className="fixed sm:absolute right-3 sm:right-0 top-16 sm:top-auto mt-2.5 w-[calc(100vw-24px)] sm:w-80 max-w-[320px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.25)] z-50 overflow-hidden"
             style={{ zIndex: 9999 }}
           >
             {/* Header: User Info Card */}

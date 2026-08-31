@@ -177,7 +177,7 @@ export function NotificationDropdown() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="absolute right-0 mt-2.5 w-[360px] sm:w-[460px] md:w-[490px] bg-white border border-slate-200 rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] z-50 overflow-hidden flex flex-col max-h-[85vh]"
+            className="fixed sm:absolute right-3 sm:right-0 top-16 sm:top-auto mt-2.5 w-[calc(100vw-24px)] sm:w-[460px] md:w-[490px] max-w-[490px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] z-50 overflow-hidden flex flex-col max-h-[80vh] sm:max-h-[85vh]"
             style={{ zIndex: 9999 }}
           >
             {/* Header */}
