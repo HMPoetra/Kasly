@@ -29,13 +29,15 @@ export function usePermissions() {
     };
   }, []);
 
+  const FULL_ACCESS_ROLES = ['CLASS_LEADER', 'SECRETARY_1', 'SECRETARY_2'];
+
   const hasAccess = (resource: string) => {
-    if (roleCode === 'CLASS_LEADER') return true;
+    if (FULL_ACCESS_ROLES.includes(roleCode)) return true;
     return permissions.some((p) => p.startsWith(`${resource}.`));
   };
 
   const can = (permission: string) => {
-    if (roleCode === 'CLASS_LEADER') return true;
+    if (FULL_ACCESS_ROLES.includes(roleCode)) return true;
     return permissions.includes(permission);
   };
 
@@ -45,6 +47,6 @@ export function usePermissions() {
     isLoading,
     hasAccess,
     can,
-    isLeader: roleCode === 'CLASS_LEADER',
+    isLeader: FULL_ACCESS_ROLES.includes(roleCode),
   };
 }

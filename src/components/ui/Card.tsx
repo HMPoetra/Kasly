@@ -12,11 +12,11 @@ interface CardProps {
 
 export function Card({ children, className, variant = 'paper', hover = true, onClick }: CardProps) {
   const variants: Record<string, string> = {
-    paper: 'paper-card',
+    paper: 'paper-card dark:bg-slate-900 dark:border-slate-800 dark:text-slate-100',
     denim: 'denim-card',
     glass: [
-      'backdrop-blur-lg bg-white/70',
-      'border border-white/30',
+      'backdrop-blur-lg bg-white/70 dark:bg-slate-900/70',
+      'border border-white/30 dark:border-slate-700/30',
       'rounded-2xl',
       'shadow-[var(--shadow-card)]',
     ].join(' '),
@@ -59,7 +59,7 @@ export function CardTitle({ children, className }: CardTitleProps) {
   return (
     <h3
       className={cn(
-        'text-lg font-bold font-[var(--font-display)] text-[var(--color-accent)]',
+        'text-lg font-bold font-[var(--font-display)] text-[var(--color-accent)] dark:text-slate-100',
         className
       )}
     >

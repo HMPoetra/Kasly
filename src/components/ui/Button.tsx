@@ -32,11 +32,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         'border border-[var(--color-denim)]',
       ].join(' '),
       secondary: [
-        'bg-[var(--color-baby-blue-100)]',
-        'text-[var(--color-denim-dark)]',
-        'hover:bg-[var(--color-baby-blue-200)]',
-        'focus:ring-[var(--color-baby-blue)]',
-        'border border-[var(--color-baby-blue-200)]',
+        'bg-[var(--color-baby-blue-100)] dark:bg-slate-800',
+        'text-[var(--color-denim-dark)] dark:text-sky-300',
+        'hover:bg-[var(--color-baby-blue-200)] dark:hover:bg-slate-700',
+        'focus:ring-[var(--color-baby-blue)] dark:focus:ring-sky-700',
+        'border border-[var(--color-baby-blue-200)] dark:border-slate-700',
       ].join(' '),
       outline: [
         'border-2 border-[var(--color-denim)]',
@@ -46,9 +46,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         'focus:ring-[var(--color-denim)]',
       ].join(' '),
       ghost: [
-        'text-[var(--color-denim)]',
-        'hover:bg-[var(--color-baby-blue-50)]',
-        'focus:ring-[var(--color-baby-blue)]',
+        'text-[var(--color-denim)] dark:text-sky-400',
+        'hover:bg-[var(--color-baby-blue-50)] dark:hover:bg-slate-800',
+        'focus:ring-[var(--color-baby-blue)] dark:focus:ring-sky-700',
       ].join(' '),
       danger: [
         'bg-gradient-to-b from-[#FC8181] to-[var(--color-expense)]',

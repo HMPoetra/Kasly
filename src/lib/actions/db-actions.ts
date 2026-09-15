@@ -139,8 +139,26 @@ export async function getMembersAction() {
         'target.read', 'target.update', 'purchase.read',
         'reports.read', 'reports.export', 'evidence.read'
       ],
-      SECRETARY_1: ['users.read', 'cashflow.read', 'contribution.read', 'reports.read', 'reports.export', 'evidence.create', 'evidence.read', 'evidence.update', 'evidence.delete', 'audit.read'],
-      SECRETARY_2: ['users.read', 'cashflow.read', 'contribution.read', 'reports.read', 'evidence.create', 'evidence.read', 'evidence.update', 'evidence.delete'],
+      SECRETARY_1: [
+        'users.create', 'users.read', 'users.update', 'users.delete',
+        'roles.create', 'roles.read', 'roles.update', 'roles.delete',
+        'cashflow.create', 'cashflow.read', 'cashflow.update', 'cashflow.delete',
+        'contribution.create', 'contribution.read', 'contribution.update', 'contribution.delete',
+        'target.create', 'target.read', 'target.update', 'target.delete',
+        'purchase.create', 'purchase.read', 'purchase.update', 'purchase.delete',
+        'evidence.create', 'evidence.read', 'evidence.update', 'evidence.delete',
+        'reports.read', 'reports.export', 'audit.read', 'settings.read', 'settings.update'
+      ],
+      SECRETARY_2: [
+        'users.create', 'users.read', 'users.update', 'users.delete',
+        'roles.create', 'roles.read', 'roles.update', 'roles.delete',
+        'cashflow.create', 'cashflow.read', 'cashflow.update', 'cashflow.delete',
+        'contribution.create', 'contribution.read', 'contribution.update', 'contribution.delete',
+        'target.create', 'target.read', 'target.update', 'target.delete',
+        'purchase.create', 'purchase.read', 'purchase.update', 'purchase.delete',
+        'evidence.create', 'evidence.read', 'evidence.update', 'evidence.delete',
+        'reports.read', 'reports.export', 'audit.read', 'settings.read', 'settings.update'
+      ],
       LOGISTICS_1: ['purchase.create', 'purchase.read', 'purchase.update', 'evidence.read'],
       LOGISTICS_2: ['purchase.read', 'purchase.update', 'evidence.read'],
       DISCIPLINARY: ['users.read', 'contribution.read', 'reports.read', 'evidence.read'],
@@ -356,7 +374,60 @@ export async function getCurrentUserPermissionsAction() {
 }
 
 // ==========================================
-// 2. DASHBOARD SUMMARY
+// 1b. CHANGE PASSWORD (Current User)
+// ==========================================
+export async function changePasswordAction(currentPassword: string, newPassword: string) {
+  try {
+    const session = await auth();
+    if (!session?.user?.id) {
+      return { success: false, error: 'Sesi tidak valid. Silakan login kembali.' };
+    }
+
+    if (!newPassword || newPassword.length < 6) {
+      return { success: false, error: 'Password baru minimal 6 karakter.' };
+    }
+
+    // Fetch current user's password hash from DB
+    const [user] = await db
+      .select({ id: users.id, name: users.name, passwordHash: users.passwordHash })
+      .from(users)
+      .where(eq(users.id, session.user.id))
+      .limit(1);
+
+    if (!user) {
+      return { success: false, error: 'Akun tidak ditemukan.' };
+    }
+
+    // Verify current password
+    const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.passwordHash);
+    if (!isCurrentPasswordValid) {
+      return { success: false, error: 'Password saat ini tidak sesuai.' };
+    }
+
+    // Hash new password and update
+    const newHash = await bcrypt.hash(newPassword, 10);
+    await db
+      .update(users)
+      .set({ passwordHash: newHash })
+      .where(eq(users.id, session.user.id));
+
+    // Audit log
+    await db.insert(auditLogs).values({
+      userId: session.user.id,
+      action: 'UPDATE',
+      entity: 'USER_PASSWORD',
+      entityId: session.user.id,
+      newData: { detail: `${user.name} memperbarui kata sandi akun.` },
+    });
+
+    revalidatePath('/settings');
+    return { success: true };
+  } catch (error) {
+    console.error('Error in changePasswordAction:', error);
+    return { success: false, error: 'Terjadi kesalahan saat memperbarui password.' };
+  }
+}
+
 // ==========================================
 export async function getDashboardSummaryAction() {
   try {
@@ -888,7 +959,7 @@ export async function getSavingsTargetsAction() {
     }
 
     const canManage = TARGET_ADMIN_ROLES.includes(currentUserRoleCode || '');
-    const isClassLeader = currentUserRoleCode === 'CLASS_LEADER';
+    const isClassLeader = ['CLASS_LEADER', 'SECRETARY_1', 'SECRETARY_2'].includes(currentUserRoleCode || '');
     const isOfficer = [
       'CLASS_LEADER',
       'VICE_CLASS_LEADER',

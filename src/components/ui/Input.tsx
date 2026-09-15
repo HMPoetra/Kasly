@@ -20,7 +20,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-sm font-semibold text-[var(--color-accent)] mb-1.5 font-[var(--font-display)]"
+            className="block text-sm font-semibold text-[var(--color-accent)] dark:text-slate-300 mb-1.5 font-[var(--font-display)]"
           >
             {label}
           </label>
@@ -36,13 +36,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             type={isPassword && showPassword ? 'text' : type}
             className={cn(
-              'w-full rounded-xl border bg-white px-4 py-2.5',
-              'text-sm text-[var(--color-accent-dark)]',
-              'placeholder:text-[var(--color-denim-light)] placeholder:opacity-50',
+              'w-full rounded-xl border bg-white dark:bg-slate-800 px-4 py-2.5',
+              'text-sm text-[var(--color-accent-dark)] dark:text-slate-100',
+              'placeholder:text-[var(--color-denim-light)] placeholder:opacity-50 dark:placeholder:text-slate-500',
               'transition-all duration-200',
-              'focus:outline-none focus:ring-2 focus:ring-[var(--color-baby-blue)] focus:border-[var(--color-denim-light)]',
-              'shadow-[inset_0_2px_4px_rgba(0,0,0,0.04)]',
-              'hover:border-[var(--color-baby-blue-200)]',
+              'focus:outline-none focus:ring-2 focus:ring-[var(--color-baby-blue)] dark:focus:ring-sky-700 focus:border-[var(--color-denim-light)]',
+              'shadow-[inset_0_2px_4px_rgba(0,0,0,0.04)] dark:shadow-none',
+              'hover:border-[var(--color-baby-blue-200)] dark:hover:border-slate-500',
               error
                 ? 'border-[var(--color-expense)] focus:ring-[var(--color-expense-light)]'
                 : 'border-[var(--color-baby-blue-200)]',

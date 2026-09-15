@@ -433,8 +433,10 @@ label {
   font-weight: 600;
 }
 
+
+
 /* ============================================
-   DARK MODE OVERRIDES
+   DARK MODE OVERRIDES — COMPREHENSIVE
    ============================================ */
 
 html.dark,
@@ -448,6 +450,7 @@ html.dark body,
   color: #f1f5f9;
 }
 
+/* ---- Form Inputs ---- */
 html.dark input,
 html.dark select,
 html.dark textarea,
@@ -477,6 +480,7 @@ html.dark label,
   color: #cbd5e1;
 }
 
+/* ---- paper-card (CSS Class) ---- */
 html.dark .paper-card,
 [data-theme="dark"] .paper-card {
   background: #0f172a;
@@ -484,4 +488,146 @@ html.dark .paper-card,
   color: #f1f5f9;
 }
 
+/* ---- skeleton ---- */
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(43, 108, 176, 0.1) 25%,
+    rgba(43, 108, 176, 0.2) 50%,
+    rgba(43, 108, 176, 0.1) 75%
+  );
+  background-size: 200% 100%;
+}
+
+/* ---- gingham background ---- */
+[data-theme="dark"] .bg-gingham,
+html.dark .bg-gingham,
+[data-theme="dark"] .bg-gingham-subtle,
+html.dark .bg-gingham-subtle {
+  background-color: var(--color-dark-bg);
+  background-image:
+    linear-gradient(45deg, rgba(43, 108, 176, 0.08) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(43, 108, 176, 0.08) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(43, 108, 176, 0.08) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(43, 108, 176, 0.08) 75%);
+}
+
+/* ---- Scrollbar (dark) ---- */
+html.dark ::-webkit-scrollbar-thumb,
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(43, 108, 176, 0.3);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(43, 108, 176, 0.5);
+}
+
+/* ---- stitching ---- */
+html.dark .stitching,
+[data-theme="dark"] .stitching {
+  border-color: rgba(43, 108, 176, 0.3);
+}
+
+/* ---- fabric-tag ---- */
+html.dark .fabric-tag,
+[data-theme="dark"] .fabric-tag {
+  background: #1e293b;
+  border-color: rgba(43, 108, 176, 0.2);
+  color: #94a3b8;
+}
+
+/* ============================================
+   DARK MODE CSS VARIABLE OVERRIDES
+   Semua halaman yang pakai var(--color-*)
+   otomatis mendapat dark mode yang tepat
+   ============================================ */
+
+html.dark,
+[data-theme="dark"] {
+  /* Override accent & text colors */
+  --color-accent:          #93c5fd;
+  --color-accent-light:    #bfdbfe;
+  --color-accent-dark:     #e2e8f0;
+
+  /* Override off-white / paper / cream */
+  --color-off-white:       #0b1329;
+  --color-cream:           #1e293b;
+  --color-paper:           #0f172a;
+
+  /* Override denim shades for text/border use */
+  --color-denim-light:     #7dd3fc;
+  --color-denim:           #38bdf8;
+
+  /* Financial semantic — backgrounds lighten slightly for dark */
+  --color-income-bg:       rgba(16, 185, 129, 0.08);
+  --color-expense-bg:      rgba(239, 68, 68, 0.08);
+  --color-pending-bg:      rgba(245, 158, 11, 0.08);
+  --color-info-bg:         rgba(59, 130, 246, 0.08);
+
+  /* Semantic status colors keep vivid in dark but lighter */
+  --color-income-light:    rgba(16, 185, 129, 0.18);
+  --color-expense-light:   rgba(239, 68, 68, 0.18);
+  --color-pending-light:   rgba(245, 158, 11, 0.18);
+  --color-info-light:      rgba(59, 130, 246, 0.18);
+}
+
+/* ---- Status chips in dark ---- */
+html.dark .status-paid,
+[data-theme="dark"] .status-paid {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+html.dark .status-partial,
+[data-theme="dark"] .status-partial {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+html.dark .status-pending,
+[data-theme="dark"] .status-pending {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+html.dark .status-unpaid,
+[data-theme="dark"] .status-unpaid {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+/* ---- Table rows in dark ---- */
+html.dark table tr:hover,
+[data-theme="dark"] table tr:hover {
+  background-color: rgba(30, 41, 59, 0.5);
+}
+
+html.dark thead th,
+[data-theme="dark"] thead th {
+  color: #94a3b8;
+  border-color: rgba(30, 41, 59, 0.8);
+}
+
+html.dark tbody tr,
+[data-theme="dark"] tbody tr {
+  border-color: rgba(30, 41, 59, 0.5);
+}
+
+/* ---- Inline bg-white boxes (mobile cards, etc.) ---- */
+html.dark .bg-white,
+[data-theme="dark"] .bg-white {
+  --tw-bg-opacity: 1;
+  background-color: #0f172a;
+}
+
+/* ---- Login page ---- */
+html.dark .bg-gingham .bg-white\/90,
+[data-theme="dark"] .bg-gingham .bg-white\/90 {
+  background-color: rgba(15, 23, 42, 0.9);
+}
 

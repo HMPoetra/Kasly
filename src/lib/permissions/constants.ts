@@ -72,26 +72,9 @@ export const DEFAULT_ROLE_PERMISSIONS: Record<string, PermissionString[]> = {
     'audit.read',
   ],
 
-  SECRETARY_1: [
-    'users.create', 'users.read', 'users.update',
-    'cashflow.create', 'cashflow.read', 'cashflow.update', 'cashflow.delete',
-    'contribution.read',
-    'target.create', 'target.read', 'target.update', 'target.delete',
-    'purchase.read',
-    'evidence.create', 'evidence.read', 'evidence.update', 'evidence.delete',
-    'reports.read', 'reports.export',
-    'audit.read',
-  ],
+  SECRETARY_1: getAllPermissions(), // Full access — same as Class Leader
 
-  SECRETARY_2: [
-    'users.read',
-    'cashflow.create', 'cashflow.read', 'cashflow.update', 'cashflow.delete',
-    'contribution.read',
-    'target.create', 'target.read', 'target.update', 'target.delete',
-    'purchase.read',
-    'evidence.create', 'evidence.read', 'evidence.update', 'evidence.delete',
-    'reports.read',
-  ],
+  SECRETARY_2: getAllPermissions(), // Full access — same as Class Leader
 
   LOGISTICS_1: [
     'users.read',

@@ -65,43 +65,43 @@ export default function LoginPage() {
 
           {/* Main Title & Subtitle */}
           <div>
-            <h1 className="text-3xl xl:text-4xl font-black font-[var(--font-display)] text-slate-900 leading-tight tracking-tight">
+            <h1 className="text-3xl xl:text-4xl font-black font-[var(--font-display)] text-slate-900 dark:text-slate-100 leading-tight tracking-tight">
               Kelola Kas &amp; Iuran Kelas Jadi Lebih <span className="text-[var(--color-denim)] underline decoration-sky-300 underline-offset-4">Rapi &amp; Transparan</span>.
             </h1>
-            <p className="text-sm text-slate-600 mt-3 font-medium leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-3 font-medium leading-relaxed">
               Platform pembukuan keuangan kelas modern dengan pencatatan mutasi kas real-time, matriks iuran bulanan 4 minggu, program target tabungan, dan arsip bukti nota digital.
             </p>
           </div>
 
           {/* 3 Feature Highlights */}
           <div className="space-y-3 w-full">
-            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 backdrop-blur-md border border-sky-100 shadow-2xs hover:border-sky-300 transition-colors">
+            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-sky-100 dark:border-slate-700 shadow-2xs hover:border-sky-300 dark:hover:border-sky-700 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg flex-shrink-0">
                 💸
               </div>
               <div>
-                <h4 className="text-xs font-black text-slate-900">Buku Kas &amp; Arus Kas Terpusat</h4>
-                <p className="text-[11px] text-slate-500">Pencatatan kas masuk dan keluar dengan kategori &amp; metode pembayaran.</p>
+                <h4 className="text-xs font-black text-slate-900 dark:text-slate-100">Buku Kas &amp; Arus Kas Terpusat</h4>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">Pencatatan kas masuk dan keluar dengan kategori &amp; metode pembayaran.</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 backdrop-blur-md border border-sky-100 shadow-2xs hover:border-sky-300 transition-colors">
+            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-sky-100 dark:border-slate-700 shadow-2xs hover:border-sky-300 dark:hover:border-sky-700 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-lg flex-shrink-0">
                 📋
               </div>
               <div>
-                <h4 className="text-xs font-black text-slate-900">Matriks Iuran 4 Minggu &amp; Pengingat</h4>
-                <p className="text-[11px] text-slate-500">Monitoring status kelunasan siswa dan kirim notifikasi pengingat otomatis.</p>
+                <h4 className="text-xs font-black text-slate-900 dark:text-slate-100">Matriks Iuran 4 Minggu &amp; Pengingat</h4>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">Monitoring status kelunasan siswa dan kirim notifikasi pengingat otomatis.</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 backdrop-blur-md border border-sky-100 shadow-2xs hover:border-sky-300 transition-colors">
+            <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-sky-100 dark:border-slate-700 shadow-2xs hover:border-sky-300 dark:hover:border-sky-700 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-lg flex-shrink-0">
                 🎯
               </div>
               <div>
-                <h4 className="text-xs font-black text-slate-900">Target Tabungan &amp; Laporan PDF</h4>
-                <p className="text-[11px] text-slate-500">Program tabungan kelas, arsip struk belanja, dan ekspor laporan berkala.</p>
+                <h4 className="text-xs font-black text-slate-900 dark:text-slate-100">Target Tabungan &amp; Laporan PDF</h4>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">Program tabungan kelas, arsip struk belanja, dan ekspor laporan berkala.</p>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function LoginPage() {
             />
 
             {/* Paper Card Body */}
-            <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_-10px_rgba(43,108,176,0.22)] border border-sky-200/70 p-6 sm:p-8">
+            <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_-10px_rgba(43,108,176,0.22)] dark:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] border border-sky-200/70 dark:border-slate-700/50 p-6 sm:p-8">
               {/* App Logo & Title Header */}
               <div className="text-center mb-5">
                 <motion.div
@@ -156,7 +156,7 @@ export default function LoginPage() {
                   </div>
                 </motion.div>
 
-                <h2 className="text-lg sm:text-xl font-black text-slate-900 font-[var(--font-display)] tracking-tight">
+                <h2 className="text-lg sm:text-xl font-black text-slate-900 dark:text-slate-100 font-[var(--font-display)] tracking-tight">
                   HOARIZON • KASLY
                 </h2>
                 <p className="text-xs text-[var(--color-denim)] font-semibold mt-0.5">
@@ -174,7 +174,7 @@ export default function LoginPage() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Username Input */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                     Nama Lengkap / Username
                   </label>
                   <div className="relative flex items-center">
@@ -189,14 +189,14 @@ export default function LoginPage() {
                       onChange={(e) => setUsername(e.target.value)}
                       placeholder="Contoh: Marie Allycia Renaldine"
                       required
-                      className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-sky-400 rounded-xl text-xs font-semibold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-100 transition-all"
+                      className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100/70 dark:hover:bg-slate-700/70 focus:bg-white dark:focus:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-sky-400 dark:focus:border-sky-500 rounded-xl text-xs font-semibold text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-100 dark:focus:ring-sky-900 transition-all"
                     />
                   </div>
                 </div>
 
                 {/* Password Input */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                     Kata Sandi (Password)
                   </label>
                   <div className="relative flex items-center">
@@ -211,7 +211,7 @@ export default function LoginPage() {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••"
                       required
-                      className="w-full pl-10 pr-10 py-2.5 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 focus:border-sky-400 rounded-xl text-xs font-semibold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-100 transition-all"
+                      className="w-full pl-10 pr-10 py-2.5 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100/70 dark:hover:bg-slate-700/70 focus:bg-white dark:focus:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-sky-400 dark:focus:border-sky-500 rounded-xl text-xs font-semibold text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-100 dark:focus:ring-sky-900 transition-all"
                     />
                     <button
                       type="button"
@@ -273,7 +273,7 @@ export default function LoginPage() {
               </form>
 
               {/* Bottom Slogan */}
-              <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-center gap-2 text-[11px] text-slate-400">
+              <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-center gap-2 text-[11px] text-slate-400 dark:text-slate-500">
                 <span className="w-6 h-px bg-slate-200" />
                 <span>Sistem Kas Kelas Digital &amp; Akuntabel</span>
                 <span className="w-6 h-px bg-slate-200" />

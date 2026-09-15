@@ -102,8 +102,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     };
   }, [pathname]);
 
+  const FULL_ACCESS_ROLES = ['CLASS_LEADER', 'SECRETARY_1', 'SECRETARY_2'];
+
   const hasAccessToResource = (resource?: string | string[]) => {
-    if (!resource || userRole === 'CLASS_LEADER') return true;
+    if (!resource || FULL_ACCESS_ROLES.includes(userRole)) return true;
     const resources = Array.isArray(resource) ? resource : [resource];
     return resources.some((res) =>
       userPerms.some((p) => p.startsWith(`${res}.`))
