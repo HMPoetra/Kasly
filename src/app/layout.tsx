@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito, Inter } from "next/font/google";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Script from "next/script";
 import "./globals.css";
 
 config.autoAddCss = false;
@@ -34,17 +35,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#2B6CB0" />
-        {/* Anti-flash: apply dark class before first paint */}
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script
-          // This runs before React hydration to prevent light flash in dark mode
-          // suppressHydrationWarning needed on html element covers this
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('kasly-theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t==='system'&&d)){document.documentElement.classList.add('dark');document.documentElement.setAttribute('data-theme','dark')}else{document.documentElement.setAttribute('data-theme','light')}}catch(e){}`,
-          }}
-        />
       </head>
       <body className="min-h-full flex flex-col font-[var(--font-body)]">
+        {/* Anti-flash: apply dark class before first paint */}
+        <Script id="anti-flash" strategy="beforeInteractive">
+          {`try{var t=localStorage.getItem('kasly-theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(t==='system'&&d)){document.documentElement.classList.add('dark');document.documentElement.setAttribute('data-theme','dark')}else{document.documentElement.setAttribute('data-theme','light')}}catch(e){}`}
+        </Script>
         {children}
       </body>
     </html>
